@@ -27,6 +27,22 @@ function App() {
     .then( fetchListings );
   }
 
+  function submitNewItem( e, newItem ) {
+    e.preventDefault()
+
+    const postRequest = {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        "Accepts": "application/json"
+      },
+      body: JSON.stringify( newItem )
+    }
+    fetch( listingsUrl, postRequest )
+    .then( res => res.json())
+    .then( newItemData => setListings( [...listings, newItemData ]))
+  }
+
   function toggleFavorite( id ) {
     setIsFavorited( !isFavorited )
   }
@@ -43,6 +59,7 @@ function App() {
       <Header
         searchListings={ searchListings }
         changeSearchListings={ changeSearchListings }
+        submitNewItem={ submitNewItem }
       />
       <ListingsContainer 
         listings={ filterListings }

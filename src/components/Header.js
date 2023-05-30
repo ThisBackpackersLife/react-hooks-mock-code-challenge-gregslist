@@ -1,7 +1,8 @@
 import React from "react";
 import Search from "./Search";
+import Form from "./Form";
 
-function  Header({ searchListings, changeSearchListings }) {
+function  Header({ searchListings, changeSearchListings, submitNewItem }) {
   return (
     <header>
       <h1>
@@ -13,6 +14,9 @@ function  Header({ searchListings, changeSearchListings }) {
       <Search
         searchListings={ searchListings }
         changeSearchListings={ changeSearchListings }
+      />
+      <Form 
+        submitNewItem={ submitNewItem }
       />
     </header>
   );
